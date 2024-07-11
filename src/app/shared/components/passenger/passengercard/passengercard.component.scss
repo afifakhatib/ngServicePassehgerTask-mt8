@@ -1,0 +1,18 @@
+
+.passName input{
+    position: relative;
+}
+
+input:disabled{
+    background-color: transparent;
+    border: none;
+}
+
+.shape{
+    height : 15px;
+    width : 15px;
+    border-radius: 50%;
+    position: absolute;
+    top : 30px;
+    left : 30px;
+}

@@ -1,0 +1,36 @@
+
+
+<mat-card class='mb-4'>
+    <mat-card-header>
+       <div class="form-group w-100">
+        <span class="shape"
+        [ngClass]="{
+            'bg-success' : Passenger.checkedIn,
+            'bg-danger'  :  !Passenger.checkedIn
+        }">
+      </span>
+       <label for="passengerName" class="sr-only">Passenger Name</label>
+       <input type="text" [value]="Passenger.fullname" [disabled]="!isEditMode"
+        class="form-control" #fullname>
+       </div>
+    </mat-card-header>
+    <mat-divider class="bg-dark"></mat-divider>
+    <mat-card-content>
+         <div class="passInfo mt-3">
+            <p><strong>Check In Date : </strong>
+                 {{Passenger.checkInDate ? (Passenger.checkInDate | date) : 'Not Checked In yet!!'}}</p>
+            <p><strong>Children : </strong> {{Passenger.children?.length || 0}} </p>
+         </div>
+     </mat-card-content> 
+     <mat-divider class="bg-dark"></mat-divider> 
+     <mat-card-actions>
+       <div class="btnGroup">
+        <button class="btn-sm btn" mat-raised-button color="primary" (click)="isEditMode = true"
+        *ngIf="!isEditMode">Edit</button>
+        <button class="btn-sm btn" *ngIf="isEditMode" 
+         mat-raised-button color="primary" 
+         (click)="onUpdatePass(fullname)">Done</button>
+        <button class="btn-sm btn"  mat-raised-button color="warn" (click)="onRemove(Passenger)">Remove</button>
+       </div>
+     </mat-card-actions> 
+</mat-card>
